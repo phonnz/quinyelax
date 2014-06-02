@@ -60,6 +60,8 @@ class Match(models.Model):
 class Subscriber(models.Model):
 	idSubscriber = models.AutoField(primary_key = True)
 	email = models.EmailField('Correo')
+	created = models.DateTimeField('Creado', editable = False, auto_now_add = True)
+	updated = models.DateTimeField('Actualizado', editable = False, auto_now = True)
 
 
 class UserData(models.Model):
