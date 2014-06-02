@@ -59,14 +59,26 @@ WSGI_APPLICATION = 'quinyelax.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'quinyelax',                      # Or path to database file if using sqlite3.
+        'NAME': 'heroku_def8bd258b9a2f5',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
-        'USER': 'root',
-        'PASSWORD': 'adminadmin',
-        'HOST': 'localhost',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'USER': 'b24e30407e8f86',
+        'PASSWORD': 'b7b12203',
+        'HOST': 'us-cdbr-east-06.cleardb.net',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '', 
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+#         'NAME': 'quinyelax',                      # Or path to database file if using sqlite3.
+#         # The following settings are not used with sqlite3:
+#         'USER': 'root',
+#         'PASSWORD': 'adminadmin',
+#         'HOST': 'localhost',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+#         'PORT': '', 
+#     }
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
