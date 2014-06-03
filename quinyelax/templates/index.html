@@ -25,7 +25,7 @@
                 <h1 class="title">QuiNYelaX</h1>
                 <nav>
                     <ul>
-                        <li><a href="/grupos">Grupos</a></li>
+                        <li><a href="/">Grupos</a></li>
                         <li><a href="/participar">Participar</a></li>
                         <li><a href="/resumen">Resumen</a></li>
                         <li><a href="/participantes">Participantes</a></li>
@@ -41,9 +41,10 @@
                         <ul>
                             <li><article class="team"><b>Grupo {{ g.0.group.0 }}</b></article><article class="pts"><b>Puntos</b></article></li>
                             {% for t in g %}
-                            <li><article class="team">{{t.name}}</article><article class="pts">{{ t.points }}</article></li>
+                            <li><article class="team"><img src="/static/img/flagsSmall/{{t.name}}.png"/>&nbsp;{{t.name}}</article><article class="pts">{{ t.points }}</article></li>
                             {% endfor %}
                     </article>
+                    
                 {% endfor %}
                 
                 <a href="http://www.fifa.com/worldcup/groups/index.html" target="_blank">Mas información</a>
@@ -52,7 +53,7 @@
 
         <div class="footer-container">
             <footer class="wrapper">
-                <h3>by @phonnz</h3>
+                <h3></h3>
             </footer>
         </div>
 

@@ -50,7 +50,10 @@ class Match(models.Model):
 	city = models.ForeignKey(City, verbose_name = 'Ciudad')
 	localGoals = models.PositiveIntegerField('Goles del local', default = 0)
  	visitantGoals = models.PositiveIntegerField('Goldes del visitante', default = 0 )
- 	classify = models.BooleanField('Clasificación', default = False)
+ 	classify = models.BooleanField('Clasificación', default = True)
+
+ 	def __unicode__(self):
+		return self.localTeam.name + ' vs ' + self.visitantTeam.name
 
  	class Meta:
 		verbose_name = 'Partido'
@@ -63,6 +66,8 @@ class Subscriber(models.Model):
 	created = models.DateTimeField('Creado', editable = False, auto_now_add = True)
 	updated = models.DateTimeField('Actualizado', editable = False, auto_now = True)
 
+	def __unicode__(self):
+		return self.email
 
 class UserData(models.Model):
 	user = models.ForeignKey(User, verbose_name = 'Usuario')
@@ -71,6 +76,9 @@ class UserData(models.Model):
 	Country = models.ForeignKey('Country', verbose_name = 'País')
 	created = models.DateTimeField('Creado', editable = False, auto_now_add = True)
 	updated = models.DateTimeField('Actualizado', editable = False, auto_now = True)
+
+	def __unicode__(self):
+		return self.nick
 
  	class Meta:
 		verbose_name = 'Suscriptor'
