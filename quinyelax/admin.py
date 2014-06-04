@@ -67,10 +67,13 @@ def calculatePoints(group, classify):
 
 
 class MatchAdmin(admin.ModelAdmin):
-	list_display = ('idMatch', 'marcador', 'hour', 'city', 'localGoals', 'visitantGoals', 'classify')
+	list_display = ('idMatch', 'group','marcador', 'hour', 'city', 'localGoals', 'visitantGoals', 'classify')
 	# list_filter = ( 'approved', 'timestamp','user')
-	#search_fields = ('latitude', 'longitude', 'user__username', 'audioDescription', 'audioName')
+	search_fields = ('localTeam', 'visitantTeam')
 	list_editable = ('localGoals', 'visitantGoals','classify')
+
+	def group(self, obj):
+		return obj.localTeam.group
 
 	def marcador(self, obj):
 		return obj.localTeam.name + ' ' + str(obj.localGoals) + ' - ' + str(obj.visitantGoals) + ' ' + obj.visitantTeam.name
@@ -82,7 +85,7 @@ class MatchAdmin(admin.ModelAdmin):
 		
 
 class TeamAdmin(admin.ModelAdmin):
-	list_display = ('idTeam', 'name', 'points', 'local_goals', 'visitant_goals', 'group', 'firstPlace','secondPlace')
+	list_display = ('idTeam', 'name', 'points','local_goals', 'visitant_goals', 'group', 'firstPlace','secondPlace')
 	# list_filter = ( 'approved', 'timestamp','user')
 	#search_fields = ('latitude', 'longitude', 'user__username', 'audioDescription', 'audioName')
 	#list_editable = ('localGoals', 'visitantGoals','classify')
