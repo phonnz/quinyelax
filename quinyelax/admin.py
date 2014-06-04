@@ -12,13 +12,13 @@ def calculatePoints(group, classify):
 			t.firstPlace = False
 			t.secondPlace = False
 
-			matches = Match.objects.filter( Q(localTeam = t) | Q(visitantTeam = t) )
+			matches = Match.objects.filter( Q(localTeam = t) | Q(visitantTeam = t)).filter( hour__lte = datetime.now() ) 
 			
 			t.points = 0
 			t.local_goals = 0
 			t.visitant_goals = 0
 			for m in matches:
-
+				##print str(m.hour)
 				##Goals counter
 				if t == m.localTeam:
 					t.local_goals += m.localGoals
