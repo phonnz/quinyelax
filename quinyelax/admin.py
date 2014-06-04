@@ -14,31 +14,32 @@ def calculatePoints(group, classify):
 
 			matches = Match.objects.filter( Q(localTeam = t) | Q(visitantTeam = t)).filter( hour__lte = datetime.now() ) 
 			
-			t.points = 0
-			t.local_goals = 0
-			t.visitant_goals = 0
-			for m in matches:
-				##print str(m.hour)
-				##Goals counter
-				if t == m.localTeam:
-					t.local_goals += m.localGoals
-
-				else:
-					t.visitant_goals += m.visitantGoals
-
-				##point obtaining
-				if m.localGoals == 	m.visitantGoals:
-					t.points += 1
-
-				elif m.localGoals > m.visitantGoals:
+			if len(matches) > 0:
+				t.points = 0
+				t.local_goals = 0
+				t.visitant_goals = 0
+				for m in matches:
+					##print str(m.hour)
+					##Goals counter
 					if t == m.localTeam:
-						t.points += 3
+						t.local_goals += m.localGoals
 
-				else:
-					if t == m.visitantTeam :
-						t.points += 3
-			
-			t.save()
+					else:
+						t.visitant_goals += m.visitantGoals
+
+					##point obtaining
+					if m.localGoals == 	m.visitantGoals:
+						t.points += 1
+
+					elif m.localGoals > m.visitantGoals:
+						if t == m.localTeam:
+							t.points += 3
+
+					else:
+						if t == m.visitantTeam :
+							t.points += 3
+				
+				t.save()
 
 		##Obtain rank on group
 		teams = Team.objects.filter(group = group).order_by('points').reverse()[:2]
