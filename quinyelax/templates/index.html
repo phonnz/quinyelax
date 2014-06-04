@@ -34,8 +34,12 @@
                 </nav>
             </header>
         </div>
-        <div class="errorMessage"><p>{{ errorMessage }}</p></div>
-        <div class="successMessage"><p>{{ successMessage }}</p></div>
+        {% if not errorMessage == '' %}
+            <div class="errorMessage"><p>{{ errorMessage }}</p></div>
+        {% endif %}
+        {% if not successMessage == '' %}
+            <div class="successMessage"><p>{{ successMessage }}</p></div>
+        {% endif %}
         <div class="main-container">
             <div class="main wrapper clearfix">
                 {% for g in groups %}
