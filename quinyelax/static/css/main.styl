@@ -1,8 +1,11 @@
+BLANCO = #fff
 BLUE = #0d3958
+ERROR = #c66
 FONT = #0d3958
 GRAY = #667777
 GREEN = #379436
 YELLOW = #f1c935
+SUCCESS = #9c9
 TITLE = #0d3958
 
 BORDER = 10px solid YELLOW
@@ -59,6 +62,37 @@ ul
 
 .clear
   clear both
+
+.successMessage
+  background SUCCESS
+.errorMessage
+  background ERROR
+
+.successMessage
+.errorMessage 
+  p
+    padding: 5px 0
+    text-align: center
+    color: BLANCO
+    font-weight: lighter
+
+form 
+  text-align center
+  p
+    margin 10px 0 50px 0
+input
+  padding 5px 0
+  width 100%  
+.btn_subscribe
+  background-color BLUE
+  color White
+  -moz-border-radius 10px;
+  border-radius 10px;
+  float right
+  margin-top 10px
+
+
+
 /* ===== Initializr Styles ==================================================
    Author Jonathan Verrecchia - verekia.com/initializr/responsive-template
    ========================================================================== */
@@ -157,6 +191,14 @@ nav a:hover
    Media Queries
    ========================================================================== */
 @media only screen and (min-width 480px)
+  input
+    margin-top  10px
+    width 60%
+    p
+      margin-bottom 10px
+  .btn_subscribe
+    width 30%
+    float right
   /* ====================
     INTERMEDIATE Menu
    ==================== */
@@ -192,6 +234,8 @@ nav a:hover
 
 
 @media only screen and (min-width 768px)
+
+  
   /* ====================
     WIDE CSS3 Effects
    ==================== */

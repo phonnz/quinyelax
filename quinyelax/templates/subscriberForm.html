@@ -1,6 +1,11 @@
 <form method="POST" id="subscriberForm">
             
             {% csrf_token %}
-            {{form.as_p}}
-            <input type="submit" value="Entrar" class="btn_gris">
+            <p>
+            	<label for="id_email"><b>¡Suscribete para saber como participar!</b></label> <br/>
+            	<input id="id_email" maxlength="75" name="email" type="email" value="" placeholder="email">
+            
+            	<input type="submit" value="Suscribirme" class="btn_subscribe">
+        	</p>
         </form>
+        <div class="clear"></div>
