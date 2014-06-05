@@ -91,9 +91,11 @@ class TeamAdmin(admin.ModelAdmin):
 	#search_fields = ('latitude', 'longitude', 'user__username', 'audioDescription', 'audioName')
 	#list_editable = ('localGoals', 'visitantGoals','classify')
 
+class SubscriberAdmin(admin.ModelAdmin):
+	list_display = ('idSubscriber', 'email', 'created', 'updated')
 	
 
 admin.site.register(City)
 admin.site.register(Match,MatchAdmin)
 admin.site.register(Team, TeamAdmin)
-admin.site.register(Subscriber)
+admin.site.register(Subscriber, SubscriberAdmin)
