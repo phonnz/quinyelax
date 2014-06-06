@@ -70,7 +70,7 @@ class Subscriber(models.Model):
 		return self.email
 
 class UserData(models.Model):
-	user = models.ForeignKey(User, verbose_name = 'Usuario')
+	User = models.ForeignKey(User, verbose_name = 'Usuario')
 	nick = models.CharField('Nick', max_length=100)
 	bornDate = models.DateField('Fecha de Nacimiento', null =  True, blank = True)
 	Country = models.ForeignKey('Country', verbose_name = 'País', null =  True, blank = True)
@@ -100,13 +100,71 @@ class UserData(models.Model):
 	Y = models.ForeignKey('Team', verbose_name = 'Equipo', null = True, blank = True, related_name = 'id_H')
 	champ = models.ForeignKey('Team', verbose_name = 'Equipo', null = True, blank = True, related_name = 'id_champ')
 	third = models.ForeignKey('Team', verbose_name = 'Equipo', null = True, blank = True, related_name = 'id_third')
+
+	firstAResult = models.BooleanField('AciertoA', default = False)
+	secondAResult = models.BooleanField('AciertoA', default = False)
+	firstBResult = models.BooleanField('AciertoA', default = False)
+	secondBResult = models.BooleanField('AciertoA', default = False)
+	firstCResult = models.BooleanField('AciertoA', default = False)
+	secondCResult = models.BooleanField('AciertoA', default = False)
+	firstDResult = models.BooleanField('AciertoA', default = False)
+	secondDResult = models.BooleanField('AciertoA', default = False)
+	firstEResult = models.BooleanField('AciertoA', default = False)
+	secondEResult = models.BooleanField('AciertoA', default = False)
+	firstFResult = models.BooleanField('AciertoA', default = False)
+	secondFResult = models.BooleanField('AciertoA', default = False)
+	firstGResult = models.BooleanField('AciertoA', default = False)
+	secondGResult = models.BooleanField('AciertoA', default = False)
+	firstHResult = models.BooleanField('AciertoA', default = False)
+	secondHResult = models.BooleanField('AciertoA', default = False)
+	AResult = models.BooleanField('AciertoA', default = False)
+	BResult = models.BooleanField('AciertoA', default = False)
+	CResult = models.BooleanField('AciertoA', default = False)
+	DResult = models.BooleanField('AciertoA', default = False)
+	WResult = models.BooleanField('AciertoA', default = False)
+	ZResult = models.BooleanField('AciertoA', default = False)
+	XResult = models.BooleanField('AciertoA', default = False)
+	YResult = models.BooleanField('AciertoA', default = False)
+	champResult = models.BooleanField('AciertoA', default = False)
+	thirdResult = models.BooleanField('AciertoA', default = False)
+
 	created = models.DateTimeField('Creado', editable = False, auto_now_add = True)
 	updated = models.DateTimeField('Actualizado', editable = False, auto_now = True)
 
 	def __unicode__(self):
-		return self.nick
+		return self.user.name
 
  	class Meta:
-		verbose_name = 'Suscriptor'
-		verbose_name_plural = 'Suscriptores'
+		verbose_name = 'Octavo'
 		ordering = ('created', )
+
+class UserGroup(models.Model):
+	idUserGroup = models.AutoField(primary_key = True)
+	User = models.ForeignKey(User)
+	name = models.CharField('Ganador' , max_length = 100)
+	users = models.ManyToManyField(User)
+	created = models.DateTimeField('Creado', editable = False, auto_now_add = True)
+	updated = models.DateTimeField('Actualizado', editable = False, auto_now = True)
+
+	def __unicode__(self):
+		return self.email
+
+	class Meta:
+		verbose_name = 'Partido del participante'
+		verbose_name_plural = 'Partidos del participante'
+
+
+class UserMatch(models.Model):
+	idUserMatch = models.AutoField(primary_key = True)
+	User = models.ForeignKey(User)
+	Match = models.ForeignKey('Match', verbose_name = 'Partido')
+	winner = models.CharField('Ganador' , max_length = 3)
+	created = models.DateTimeField('Creado', editable = False, auto_now_add = True)
+	updated = models.DateTimeField('Actualizado', editable = False, auto_now = True)
+
+	def __unicode__(self):
+		return self.email
+
+	class Meta:
+		verbose_name = 'Partido del participante'
+		verbose_name_plural = 'Partidos del participante'
