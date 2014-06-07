@@ -6,6 +6,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'quinyelax.views.home', name='home'),
+    url(r'^quiniela$', 'quinyelax.views.quiniela', name='quiniela'),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),

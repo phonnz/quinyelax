@@ -49,6 +49,9 @@ def home(request):
     return render(request, 'index.html',{ 'groups':groups, 'form':form, 'errorMessage':errorMsg, 'successMessage':successMsg})
 
 
+def quiniela(reqquest):
+
+    return render(request, 'quiniela.html', {'local':local, 'visitant':visitant})
 
 def send_Mail(email):
 	

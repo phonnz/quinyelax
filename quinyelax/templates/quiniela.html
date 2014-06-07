@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>QuiNYelaX</title>
-        <meta name="description" content="Define al campeón del mundo 2014 a través de un recorrido por los partidos del mundial">
+        <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="/static/css/normalize.min.css">
@@ -23,18 +23,9 @@
         {% include 'header.html' %}
         <div class="main-container">
             <div class="main wrapper clearfix">
-                {% for g in groups %}
-                    <article class="group">
-                        <ul>
-                            <li><article class="team"><b>Grupo {{ g.0.group.0 }}</b></article><article class="pts"><b>Puntos</b></article></li>
-                            {% for t in g %}
-                            <li><article class="team"><img src="/static/img/flagsSmall/{{t.name}}.png"/>&nbsp;{{t.name}}</article><article class="pts">{{ t.points }}</article></li>
-                            {% endfor %}
-                    </article>
-                    
-                {% endfor %}
+                
                 <div class="clear"></div>
-                <a href="http://www.fifa.com/worldcup/groups/index.html" target="_blank">Mas informaci&oacute;n</a>
+                <a href="http://www.fifa.com/worldcup/groups/index.html" target="_blank">Mas información</a>
             </div> <!-- #main -->
         </div> <!-- #main-container -->
 

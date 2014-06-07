@@ -140,9 +140,9 @@ class UserData(models.Model):
 
 class UserGroup(models.Model):
 	idUserGroup = models.AutoField(primary_key = True)
-	User = models.ForeignKey(User)
+	user = models.ForeignKey(User, verbose_name = 'Dueño')
 	name = models.CharField('Ganador' , max_length = 100)
-	users = models.ManyToManyField(User)
+	users = models.ManyToManyField(User,verbose_name = 'Ususarios', related_name = 'users_allowed')
 	created = models.DateTimeField('Creado', editable = False, auto_now_add = True)
 	updated = models.DateTimeField('Actualizado', editable = False, auto_now = True)
 
