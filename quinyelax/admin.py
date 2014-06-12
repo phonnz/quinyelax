@@ -93,9 +93,23 @@ class TeamAdmin(admin.ModelAdmin):
 
 class SubscriberAdmin(admin.ModelAdmin):
 	list_display = ('idSubscriber', 'email', 'created', 'updated')
+
+class UserMatchAdmin(admin.ModelAdmin):
+	list_display = ('userEmail', 'localTeam', 'visitantTeam', 'winner')
+
+	def userEmail(self, obj):
+		return obj.User.email
+
+	def localTeam(self, obj):
+		return obj.Match.localTeam
+
+	def visitantTeam(self, obj):
+		return obj.Match.visitantTeam
+
 	
 
 admin.site.register(City)
 admin.site.register(Match,MatchAdmin)
 admin.site.register(Team, TeamAdmin)
 admin.site.register(Subscriber, SubscriberAdmin)
+admin.site.register(UserMatch, UserMatchAdmin)

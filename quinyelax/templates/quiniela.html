@@ -23,9 +23,19 @@
         {% include 'header.html' %}
         <div class="main-container">
             <div class="main wrapper clearfix">
-                
+            	<h2>¡Elije al ganador!</h2>
+                <div class="flagsContainer">
+                	<figure class="team">
+	                	<img src="/static/img/flagsBig/{{ localTeam }}.png" />
+	                </figure>
+	                <h2 class="vs">V.S.</h2>
+	                <figure class="team">
+	                	<img src="/static/img/flagsBig/{{ visitantTeam }}.png" />
+	                </figure>
+	            </div>
+
                 <div class="clear"></div>
-                <a href="http://www.fifa.com/worldcup/groups/index.html" target="_blank">Mas información</a>
+                
             </div> <!-- #main -->
         </div> <!-- #main-container -->
 

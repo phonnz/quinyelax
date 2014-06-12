@@ -163,7 +163,7 @@ class UserMatch(models.Model):
 	updated = models.DateTimeField('Actualizado', editable = False, auto_now = True)
 
 	def __unicode__(self):
-		return self.email
+		return self.User.email
 
 	class Meta:
 		verbose_name = 'Partido del participante'

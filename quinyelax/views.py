@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 
 from models import *
@@ -49,9 +52,37 @@ def home(request):
     return render(request, 'index.html',{ 'groups':groups, 'form':form, 'errorMessage':errorMsg, 'successMessage':successMsg})
 
 
-def quiniela(reqquest):
+@login_required
+def quiniela(request):
+    errorMsg = ''
+    successMsg = ''
+    localTeam = ''
+    visitantTeam = ''
 
-    return render(request, 'quiniela.html', {'local':local, 'visitant':visitant})
+    ##TODO create this on user register
+    # matches = Match.objects.all()
+    # for m in matches:
+    #     um = UserMatch()
+    #     um.User = request.user
+    #     um.Match = m
+    #     um.save()
+
+
+
+    userMatches = UserMatch.objects.filter(User = request.user)#.order_by(Match__hour)
+    print len(userMatches)
+    for um in userMatches:
+        print um.winner
+        if um.winner == '':
+            print um.Match.localTeam.name + um.Match.visitantTeam.name
+            localTeam = um.Match.localTeam.name
+            visitantTeam = um.Match.visitantTeam.name
+            break
+
+    if localTeam == '' or visitantTeam == '':
+        return HttpResponseRedirect('/octavos')
+
+    return render(request, 'quiniela.html', {'errorMessage':errorMsg, 'successMessage':successMsg, 'localTeam':localTeam, 'visitantTeam':visitantTeam})
 
 def send_Mail(email):
 	
